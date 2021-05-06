@@ -107,6 +107,8 @@ img {
     width: 50%;
     margin: 8px;
     padding-left: 10px;
+    background-color: #ddd;
+    cursor: pointer;
   }
 
   /* Style the buttons */

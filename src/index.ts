@@ -9,8 +9,8 @@ class Country implements Country {
   population: number;
   languages: Array<Map<string, string>>;
   timezones: Array<string>;
-  currencies: string;
-  borders: string;
+  currencies: Array<Map<string, string>>;
+  borders: Array<string>;
 
   constructor(
     //constructor to associate object attributes to attributes of the instances of the database
@@ -23,8 +23,8 @@ class Country implements Country {
     population: number,
     languages: Array<Map<string, string>>,
     timezones: Array<string>,
-    currencies: string,
-    borders: string
+    currencies: Array<Map<string, string>>,
+    borders: Array<string>
   ) {
     this.name = name;
     this.alpha2Code = alpha2Code;
@@ -89,7 +89,7 @@ function builDetails(selected: HTMLElement) {
       //we go through all the countries in the database (here the list of 'Country' objects)
       if (selected.id === countries[i].name) {
         document.getElementById("name").innerHTML = countries[i].name;
-        document.getElementById("flag").innerHTML = countries[i].flag;
+        document.querySelector("img").src = countries[i].flag;
         document.getElementById("nativeName").innerHTML =
           countries[i].nativeName;
         document.getElementById("population").innerHTML = String(
@@ -102,8 +102,13 @@ function builDetails(selected: HTMLElement) {
           document.getElementById("languages").innerHTML +=
             ", " + countries[i].languages[j].get("name");
         }
-        document.getElementById("currencies").innerHTML =
-          countries[i].currencies;
+        document.getElementById("currencies").innerHTML = countries[
+          i
+        ].currencies[0].get("name");
+        for (let j: number = 1; j < countries[i].languages.length; j++) {
+          document.getElementById("currencies").innerHTML +=
+            ", " + countries[i].currencies[j].get("name");
+        }
         document.getElementById("borders").innerHTML = codeToName(
           countries[i].borders[0]
         );
@@ -138,7 +143,7 @@ function buildListCountry(input: string) {
         var item = document.createElement("li");
         //this element will hold a text with the name and ISO 3166-1 Code of the country
         item.innerHTML =
-          "<h2>" + countries[i].name + "<h2> \n " + countries[i].alpha2Code;
+          countries[i].alpha2Code + "\n <h2>" + countries[i].name + "<h2>";
         item.id = countries[i].name;
         item.appendChild(document.createTextNode("Item " + i.toString));
         list.appendChild(item);
