@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="src/index.ts"></script>
+  </head>
+
+  <body>
+    <div class="topnav">
+      <a class="active" href="#home">Home</a>
+      <div class="search-container">
+        <input
+          id="searchCountry"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button
+          type="submit"
+          id="searchbutton"
+          variant="outline-danger"
+          onclick="buildListCountry('searchCountry'.value)"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+    <br />
+    <ul id="list">
+      <li
+        id="France"
+        class="column"
+        style="background-color: #ddd;"
+        onclick="buildDetails(this.id)"
+      >
+        <h2>France</h2>
+        <p>FR</p>
+      </li>
+      <li id="Sweden" class="column" style="background-color: #ddd;">
+        <h2>Sweden</h2>
+        <p>SE</p>
+      </li>
+    </ul>
+    <div id="container">
+      <h2 id="name">France</h2>
+      <img id="flag" src="https://restcountries.eu/data/fra.svg" />
+      <p id="nativeName">Native name : France</p>
+      <p id="capital">Capital : Paris</p>
+      <p id="languages">Languages : French</p>
+      <p id="population">Population : 66710000</p>
+      <p id="timezones">
+        Time Zones :
+        UTC-10:00,UTC-09:30,UTC-09:00,UTC-08:00,UTC-04:00,UTC-03:00,UTC+01:00,UTC+03:00,UTC+04:00,UTC+05:00,UTC+11:00,UTC+12:00
+      </p>
+      <p id="currencies">Currencies : Euro</p>
+      <p id="borders">
+        Borders : Andorre, Belgique, Deutschland, Italia, Luxembourg, Monaco,
+        Espagne, Suisse
+      </p>
+    </div>
+  </body>
+</html>
